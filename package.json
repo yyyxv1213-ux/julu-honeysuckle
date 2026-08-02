@@ -15,7 +15,6 @@
     "marked": "^18.0.7",
     "regression": "^2.0.1",
     "vue": "^3.5.40",
-    "vue-echarts": "^8.0.1",
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
