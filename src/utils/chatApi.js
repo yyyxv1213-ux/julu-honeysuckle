@@ -7,7 +7,7 @@
 import axios from 'axios'
 
 const API_KEY = import.meta.env.VITE_AGNES_API_KEY || ''
-const API_URL = import.meta.env.VITE_AGNES_API_URL || 'https://apihub.agnes-ai.cn/v1/chat/completions'
+const API_URL = import.meta.env.VITE_AGNES_API_URL || 'https://api.agnes-ai.cn/v1/chat/completions'
 const MODEL = import.meta.env.VITE_AGNES_MODEL || 'agnes-2.0-flash'
 
 const SYSTEM_PROMPT =
