@@ -70,6 +70,6 @@ export function chatWithLocalFaq(question, faqList) {
     '- 金银花什么时候采收？\n' +
     '- 有哪些补贴政策？\n' +
     '- 白粉病怎么防治？\n\n' +
-    '（当前为本地知识库模式，可回答常见问题）'
+    '（当前为本地知识库模式；配置 Agnes API Key 后可使用 AI 自由问答）'
   )
 }

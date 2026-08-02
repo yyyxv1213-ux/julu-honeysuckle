@@ -66,7 +66,7 @@ watch(messages, (val) => {
 <template>
   <div class="page-wrap">
     <div class="page-title">智能问答</div>
-    <div class="page-desc">金银花产业知识问答 · 在线解答，离线时自动使用本地知识库</div>
+    <div class="page-desc">金银花产业知识问答 · AI 在线解答，离线时自动切换本地知识库</div>
 
     <div class="stat-card chat-card">
       <div class="chat-toolbar">
@@ -83,10 +83,10 @@ watch(messages, (val) => {
       <div ref="scrollRef" class="chat-body">
         <el-empty
           v-if="messages.length === 0"
-          description="您好！我是金银花产业助手，可以问我关于种植、烘干、价格、政策、病虫害防治等问题。"
+          description="您好！我是金银花产业 AI 助手，可以问我关于种植、烘干、价格、政策、病虫害防治等问题。"
         />
         <div v-for="(m, i) in messages" :key="i" :class="['msg', m.role]">
-          <div class="msg-avatar">{{ m.role === 'user' ? '我' : '答' }}</div>
+          <div class="msg-avatar">{{ m.role === 'user' ? '我' : 'AI' }}</div>
           <div class="msg-bubble">
             <div v-if="m.role === 'assistant' && m.content === '…'" class="typing">
               <span></span><span></span><span></span>

@@ -1,6 +1,6 @@
 /**
  * 巨鹿金银花产业智慧服务平台 — 全局样式
- * 统一视觉系统：主色 #1f4d35 / 辅色 #2c6b48 / 强调色 #d4a94e / 背景 #f5f7f5
+ * 统一视觉系统「暖乡·纸墨」：暖米宣纸底 #f6f1e6 / 墨绿 #2e3d33 / 干花金 #c99b3f / 陶土棕 #8a7f6a
  */
 
 /* ===== Reset ===== */
@@ -19,8 +19,12 @@ html {
 
 body {
   font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
-  color: #2b2a26;
-  background: #f5f7f5;
+  color: #3d3a33;
+  background-color: #f6f1e6;
+  /* 纸感纹理：极淡的光斑模拟宣纸纤维 */
+  background-image: radial-gradient(circle at 20% 15%, rgba(255, 252, 240, 0.55) 0%, transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(214, 196, 158, 0.18) 0%, transparent 45%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -41,22 +45,42 @@ body {
 .page-title {
   font-size: 22px;
   font-weight: 600;
-  color: #1f4d35;
+  color: #2e3d33;
   margin-bottom: 4px;
 }
 
 .page-desc {
   font-size: 14px;
-  color: #8a8578;
+  color: #8a7f6a;
   margin-bottom: 18px;
 }
 
-/* ===== 通用卡片 ===== */
+/* ===== 通用卡片（纸感，去 AI demo 味） ===== */
 .stat-card {
-  border-radius: 10px;
-  border: 1px solid #e8e8e8;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(31, 77, 53, 0.05);
+  border-radius: 6px;
+  border: 1px solid #e6dcc8;
+  background: #fffdf6;
+  box-shadow: 0 1px 3px rgba(90, 72, 30, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(90, 72, 30, 0.1);
+}
+
+/* 卡片入场动画：错落浮现 */
+.stat-card {
+  animation: fadeInUp 0.45s ease both;
+}
+.stat-card:nth-child(2) { animation-delay: 0.05s; }
+.stat-card:nth-child(3) { animation-delay: 0.1s; }
+.stat-card:nth-child(4) { animation-delay: 0.15s; }
+.stat-card:nth-child(5) { animation-delay: 0.2s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== Markdown 渲染 ===== */
@@ -68,7 +92,7 @@ body {
 .md-body h1, .md-body h2, .md-body h3 {
   margin: 14px 0 8px;
   font-size: 17px;
-  color: #1f4d35;
+  color: #2e3d33;
 }
 .md-body ul, .md-body ol {
   padding-left: 22px;
@@ -76,7 +100,7 @@ body {
 }
 .md-body li { margin: 5px 0; }
 .md-body code {
-  background: #f0f0f0;
+  background: #f0ece1;
   border-radius: 4px;
   padding: 2px 7px;
   font-size: 14px;
@@ -89,7 +113,7 @@ body {
   overflow-x: auto;
   margin: 10px 0;
 }
-.md-body strong { color: #1f4d35; }
+.md-body strong { color: #2e3d33; }
 
 /* ===== 响应式：移动端适配 ===== */
 @media (max-width: 768px) {

@@ -147,7 +147,7 @@ function onUpload(raw) {
         type: ai.type || '—',
         symptom: hit ? hit.symptom : (ai.symptom || '暂无症状描述。'),
         prevention: hit ? hit.prevention : '请在下方图鉴中搜索相近症状获取防治建议。',
-        from: '在线识别',
+        from: 'AI 智能识别',
         previewUrl: compressed // 保存压缩后图片，供下次进入页面恢复预览
       }
       setStorage(STORAGE_KEY, result.value)
@@ -161,7 +161,7 @@ function onUpload(raw) {
           type: match.type,
           symptom: match.symptom,
           prevention: match.prevention,
-          from: '本地图鉴匹配（在线识别暂不可用）',
+          from: '本地图鉴匹配（AI 识别暂不可用）',
           previewUrl: ''
         }
       } else {
@@ -200,7 +200,7 @@ onUnmounted(() => {
 <template>
   <div class="page-wrap">
     <div class="page-title">病虫害识别助手</div>
-    <div class="page-desc">上传金银花叶片/花蕾图片，自动识别病虫害（无法识别时自动匹配本地图鉴）</div>
+    <div class="page-desc">上传金银花叶片/花蕾图片，AI 自动识别病虫害（无法识别时自动匹配本地图鉴）</div>
 
     <el-row :gutter="16">
       <el-col :xs="24" :md="10">
@@ -222,7 +222,7 @@ onUnmounted(() => {
           </el-upload>
           <div v-if="uploading" class="uploading">
             <el-icon class="is-loading" :size="22"><Loading /></el-icon>
-            <div class="uploading-title">正在识别中…</div>
+            <div class="uploading-title">AI 识别中…</div>
             <div class="uploading-tip">识别通常需要 15~60 秒，请耐心等待，勿重复上传</div>
           </div>
 

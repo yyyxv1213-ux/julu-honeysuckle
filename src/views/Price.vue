@@ -87,9 +87,9 @@ async function askWeatherAdvice() {
         timeout: 60000
       }
     )
-    weatherAdvice.value = resp.data?.choices?.[0]?.message?.content || '（暂无解读内容）'
+    weatherAdvice.value = resp.data?.choices?.[0]?.message?.content || '（AI 未返回内容）'
   } catch (e) {
-    weatherAdvice.value = '（解读失败，可稍后重试）'
+    weatherAdvice.value = '（AI 解读失败，可稍后重试）'
   }
   adviceLoading.value = false
 }
@@ -252,11 +252,11 @@ watch(range, (val) => {
               @click="askWeatherAdvice"
               class="weather-advice-btn"
             >
-              天气与农事解读
+              AI 解读天气与农事
             </el-button>
-            <div v-if="adviceLoading" class="weather-advice loading">正在分析…</div>
+            <div v-if="adviceLoading" class="weather-advice loading">AI 分析中…</div>
             <div v-else-if="weatherAdvice" class="weather-advice">{{ weatherAdvice }}</div>
-            <div v-if="!AGNES_KEY" class="weather-note">配置 VITE_AGNES_API_KEY 后可启用农事解读</div>
+            <div v-if="!AGNES_KEY" class="weather-note">配置 VITE_AGNES_API_KEY 后可启用 AI 农事解读</div>
           </div>
           <div v-else class="weather-loading">天气数据加载失败（open-meteo 服务不可用）</div>
         </div>

@@ -30,7 +30,14 @@ onUnmounted(() => {
   <el-container class="app-layout">
     <el-aside :width="isCollapse ? '64px' : '220px'" class="app-aside" :class="{ 'is-collapsed': isCollapse }">
       <div class="brand">
-        <span class="brand-icon">🌿</span>
+        <span class="brand-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+            <ellipse cx="9.5" cy="14" rx="5.5" ry="8" fill="#f2e7c9" stroke="#c99b3f" stroke-width="1.2" transform="rotate(-18 9.5 14)"/>
+            <ellipse cx="16.5" cy="14" rx="5.5" ry="8" fill="#f6f1e6" stroke="#c99b3f" stroke-width="1.2" transform="rotate(18 16.5 14)"/>
+            <path d="M13 3 C13 7 13 10 13 13" stroke="#2e3d33" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M13 8 C10.5 8 9 6.5 8.5 4.5 M13 9 C15.5 9 17 7.5 17.5 5.5" stroke="#2e3d33" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          </svg>
+        </span>
         <div class="brand-text">
           <div class="brand-name" v-show="!isCollapse">太行薪火 金银花开</div>
         </div>
@@ -51,7 +58,7 @@ onUnmounted(() => {
           <el-icon><Camera /></el-icon><span>病虫害识别</span>
         </el-menu-item>
         <el-menu-item index="/qa">
-          <el-icon><ChatDotRound /></el-icon><span>知识问答</span>
+          <el-icon><ChatDotRound /></el-icon><span>智能问答</span>
         </el-menu-item>
         <el-menu-item index="/policy">
           <el-icon><Document /></el-icon><span>政策资讯</span>
@@ -90,7 +97,7 @@ onUnmounted(() => {
   display: flex;
 }
 .app-aside {
-  background: linear-gradient(180deg, #1f4d35 0%, #2c6b48 100%);
+  background: #2e3d33;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -120,16 +127,16 @@ onUnmounted(() => {
 .app-menu {
   border-right: none;
   background: transparent;
-  --el-menu-text-color: rgba(255,255,255,0.82);
-  --el-menu-hover-bg-color: rgba(255,255,255,0.12);
-  --el-menu-active-color: #ffd666;
+  --el-menu-text-color: rgba(255, 255, 255, 0.82);
+  --el-menu-hover-bg-color: rgba(255, 255, 255, 0.1);
+  --el-menu-active-color: #e8c37a;
   --el-menu-bg-color: transparent;
   --el-menu-font-size: 15px;
   flex: 1;
 }
 .app-menu :deep(.el-menu-item.is-active) {
-  background: rgba(255,255,255,0.10);
-  border-right: 3px solid #ffd666;
+  background: rgba(201, 155, 63, 0.16);
+  border-left: 3px solid #c99b3f;
 }
 .app-body {
   display: flex;
@@ -138,8 +145,8 @@ onUnmounted(() => {
   min-width: 0;
 }
 .app-header {
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
+  background: #fbf7ee;
+  border-bottom: 1px solid #e5dcc8;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -154,28 +161,32 @@ onUnmounted(() => {
   min-width: 0;
 }
 .collapse-btn {
-  color: #1f4d35;
+  color: #2e3d33;
   flex-shrink: 0;
 }
 .collapse-btn:hover {
-  color: #2c6b48;
-  background: rgba(31, 77, 53, 0.08) !important;
+  color: #c99b3f;
+  background: rgba(46, 61, 51, 0.08) !important;
 }
-.header-title { font-size: 20px; font-weight: 600; color: #1f4d35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.header-extra { font-size: 13px; color: #999; }
+.header-title { font-size: 20px; font-weight: 600; color: #2e3d33; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.header-extra { font-size: 13px; color: #a09178; }
 .app-main {
-  background: #f5f7f5;
+  background: transparent;
   padding: 20px;
   flex: 1;
 }
 
-/* 页面切换淡入淡出 */
+/* 页面切换：淡入 + 轻微上浮 */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.18s ease;
+  transition: opacity 0.22s ease, transform 0.22s ease;
 }
-.fade-enter-from,
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
 .fade-leave-to {
   opacity: 0;
+  transform: translateY(-6px);
 }
 </style>

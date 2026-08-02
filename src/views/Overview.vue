@@ -9,6 +9,25 @@ const varieties = ref(industry.varieties)
 const towns = ref(industry.towns)
 const annual = ref(industry.annual)
 
+/* 数字滚动动画 */
+const displayValues = ref(cards.value.map(() => '0'))
+let rafId = 0
+onMounted(() => {
+  cards.value.forEach((c, i) => {
+    const target = parseFloat(c.value)
+    const decimals = (String(c.value).split('.')[1] || '').length
+    const start = performance.now()
+    const dur = 900
+    const tick = (now) => {
+      const p = Math.min((now - start) / dur, 1)
+      const eased = 1 - Math.pow(1 - p, 3)
+      displayValues.value[i] = (target * eased).toFixed(decimals)
+      if (p < 1) rafId = requestAnimationFrame(tick)
+    }
+    rafId = requestAnimationFrame(tick)
+  })
+})
+
 let trendChart = null
 let townChart = null
 let pieChart = null
@@ -148,11 +167,11 @@ onUnmounted(() => {
 
     <!-- 数据卡片 -->
     <el-row :gutter="16" class="stat-row">
-      <el-col :xs="12" :sm="6" v-for="c in cards" :key="c.label">
+      <el-col :xs="12" :sm="6" v-for="(c, i) in cards" :key="c.label">
         <div class="stat-card card-pad">
           <div class="card-label">{{ c.label }}</div>
           <div class="card-value">
-            {{ c.value }}<span class="card-unit">{{ c.unit }}</span>
+            {{ displayValues[i] }}<span class="card-unit">{{ c.unit }}</span>
           </div>
           <div class="card-trend">{{ c.trend }}</div>
         </div>
@@ -189,9 +208,9 @@ onUnmounted(() => {
 
 <style scoped>
 .stat-row { margin-bottom: 16px; }
-.card-pad { padding: 20px 22px; }
-.card-label { font-size: 14px; color: #8a8578; margin-bottom: 8px; }
-.card-value { font-size: 36px; font-weight: 700; color: #1f4d35; line-height: 1.1; }
+.card-pad { padding: 18px 20px; }
+.card-label { font-size: 14px; color: #8a7f6a; margin-bottom: 8px; }
+.card-value { font-size: 26px; font-weight: 700; color: #2e3d33; line-height: 1.1; }
 .card-unit { font-size: 15px; font-weight: 400; color: #8a8578; margin-left: 4px; }
 .card-trend { font-size: 13px; color: #d4a94e; margin-top: 8px; }
 .chart-row { margin-bottom: 16px; }
