@@ -14,7 +14,7 @@ const result = ref(null)
 const STORAGE_KEY = 'pest_last_result'
 
 const AGNES_KEY = import.meta.env.VITE_AGNES_API_KEY || ''
-const AGNES_URL = import.meta.env.VITE_AGNES_API_URL || 'https://apihub.agnes-ai.com/v1/chat/completions'
+const AGNES_URL = import.meta.env.VITE_AGNES_API_URL || 'https://apihub.agnes-ai.cn/v1/chat/completions'
 const AGNES_MODEL = import.meta.env.VITE_AGNES_MODEL || 'agnes-2.0-flash'
 
 // 挂载时恢复上次识别结果

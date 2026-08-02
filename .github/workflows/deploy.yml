@@ -35,7 +35,7 @@ jobs:
         env:
           # 从 GitHub Secrets 注入 API Key（仓库 Settings → Secrets → Actions 添加 VITE_AGNES_API_KEY）
           VITE_AGNES_API_KEY: ${{ secrets.VITE_AGNES_API_KEY }}
-          VITE_AGNES_API_URL: https://apihub.agnes-ai.com/v1/chat/completions
+          VITE_AGNES_API_URL: https://apihub.agnes-ai.cn/v1/chat/completions
           VITE_AGNES_MODEL: agnes-2.0-flash
 
       - name: Upload artifact

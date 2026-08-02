@@ -19,7 +19,7 @@ const weatherAdvice = ref('')
 const adviceLoading = ref(false)
 
 const AGNES_KEY = import.meta.env.VITE_AGNES_API_KEY || ''
-const AGNES_URL = import.meta.env.VITE_AGNES_API_URL || 'https://apihub.agnes-ai.com/v1/chat/completions'
+const AGNES_URL = import.meta.env.VITE_AGNES_API_URL || 'https://apihub.agnes-ai.cn/v1/chat/completions'
 const AGNES_MODEL = import.meta.env.VITE_AGNES_MODEL || 'agnes-2.0-flash'
 // 巨鹿县坐标
 const WEATHER_URL =
