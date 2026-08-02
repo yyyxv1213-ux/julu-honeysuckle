@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(start *)",
+      "PowerShell(Start-Process \"http://localhost:5176/\")",
+      "Bash(node -e \"const m = require\\('@element-plus/icons-vue'\\); console.log\\('Calculator' in m ? 'exists' : 'missing', Object.keys\\(m\\).filter\\(k=>k.includes\\('Calc'\\) || k.includes\\('Tool'\\) || k.includes\\('Money'\\)\\)\\) \")"
+    ]
+  }
+}

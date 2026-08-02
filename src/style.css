@@ -1,0 +1,120 @@
+/**
+ * 巨鹿金银花产业智慧服务平台 — 全局样式
+ * 统一视觉系统：主色 #1f4d35 / 辅色 #2c6b48 / 强调色 #d4a94e / 背景 #f5f7f5
+ */
+
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  color: #2b2a26;
+  background: #f5f7f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+/* ===== 页面内容区 ===== */
+.page-wrap {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 4px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f4d35;
+  margin-bottom: 4px;
+}
+
+.page-desc {
+  font-size: 14px;
+  color: #8a8578;
+  margin-bottom: 18px;
+}
+
+/* ===== 通用卡片 ===== */
+.stat-card {
+  border-radius: 10px;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(31, 77, 53, 0.05);
+}
+
+/* ===== Markdown 渲染 ===== */
+.md-body {
+  line-height: 1.85;
+  font-size: 15px;
+  word-break: break-word;
+}
+.md-body h1, .md-body h2, .md-body h3 {
+  margin: 14px 0 8px;
+  font-size: 17px;
+  color: #1f4d35;
+}
+.md-body ul, .md-body ol {
+  padding-left: 22px;
+  margin: 8px 0;
+}
+.md-body li { margin: 5px 0; }
+.md-body code {
+  background: #f0f0f0;
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 14px;
+}
+.md-body pre {
+  background: #2b2b2b;
+  color: #eee;
+  border-radius: 8px;
+  padding: 14px;
+  overflow-x: auto;
+  margin: 10px 0;
+}
+.md-body strong { color: #1f4d35; }
+
+/* ===== 响应式：小屏侧边栏 ===== */
+@media (max-width: 768px) {
+  .el-aside.app-aside {
+    width: 52px !important;
+    flex-shrink: 0;
+  }
+  .brand-text,
+  .app-menu .el-menu-item span {
+    display: none;
+  }
+  .header-extra {
+    display: none;
+  }
+  .app-main {
+    padding: 12px !important;
+  }
+  .page-wrap {
+    padding: 0 8px;
+  }
+}
+
+/* ===== 超宽屏适配 ===== */
+@media (min-width: 1920px) {
+  .page-wrap {
+    max-width: 1600px;
+  }
+}
