@@ -51,7 +51,7 @@ onUnmounted(() => {
           <el-icon><Camera /></el-icon><span>病虫害识别</span>
         </el-menu-item>
         <el-menu-item index="/qa">
-          <el-icon><ChatDotRound /></el-icon><span>智能问答</span>
+          <el-icon><ChatDotRound /></el-icon><span>知识问答</span>
         </el-menu-item>
         <el-menu-item index="/policy">
           <el-icon><Document /></el-icon><span>政策资讯</span>
@@ -71,7 +71,7 @@ onUnmounted(() => {
           </el-button>
           <div class="header-title">{{ route.meta.title || '太行薪火 金银花开 产业指挥服务平台' }}</div>
         </div>
-        <div class="header-extra">数据整理于公开资料 · AI 功能由 Agnes 提供</div>
+        <div class="header-extra">数据整理于公开资料 · 持续更新</div>
       </el-header>
       <el-main class="app-main">
         <router-view v-slot="{ Component }">

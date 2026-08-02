@@ -145,9 +145,9 @@ function onUpload(raw) {
         name: ai.name || '未知',
         confidence: ai.confidence || '—',
         type: ai.type || '—',
-        symptom: hit ? hit.symptom : (ai.symptom || 'AI 未给出症状描述。'),
+        symptom: hit ? hit.symptom : (ai.symptom || '暂无症状描述。'),
         prevention: hit ? hit.prevention : '请在下方图鉴中搜索相近症状获取防治建议。',
-        from: 'Agnes AI 多模态识别',
+        from: '在线识别',
         previewUrl: compressed // 保存压缩后图片，供下次进入页面恢复预览
       }
       setStorage(STORAGE_KEY, result.value)
@@ -161,7 +161,7 @@ function onUpload(raw) {
           type: match.type,
           symptom: match.symptom,
           prevention: match.prevention,
-          from: '本地图鉴匹配（AI 识别不可用，已降级）',
+          from: '本地图鉴匹配（在线识别暂不可用）',
           previewUrl: ''
         }
       } else {
@@ -169,8 +169,8 @@ function onUpload(raw) {
           name: '暂未识别',
           confidence: '—',
           type: '—',
-          symptom: 'AI 识别失败且未能从文件名匹配到图鉴条目。',
-          prevention: '请在图鉴中搜索相近症状，或检查 Agnes API 配置。',
+        symptom: '未能识别图片内容，也未匹配到本地图鉴条目。',
+        prevention: '请在图鉴中搜索相近症状，或稍后重试。',
           from: '本地兜底',
           previewUrl: ''
         }
@@ -200,7 +200,7 @@ onUnmounted(() => {
 <template>
   <div class="page-wrap">
     <div class="page-title">病虫害识别助手</div>
-    <div class="page-desc">上传金银花叶片/花蕾图片，由 Agnes AI 多模态识别病虫害（API 不可用时降级本地图鉴）</div>
+    <div class="page-desc">上传金银花叶片/花蕾图片，自动识别病虫害（无法识别时自动匹配本地图鉴）</div>
 
     <el-row :gutter="16">
       <el-col :xs="24" :md="10">
@@ -222,7 +222,7 @@ onUnmounted(() => {
           </el-upload>
           <div v-if="uploading" class="uploading">
             <el-icon class="is-loading" :size="22"><Loading /></el-icon>
-            <div class="uploading-title">AI 正在识别中…</div>
+            <div class="uploading-title">正在识别中…</div>
             <div class="uploading-tip">识别通常需要 15~60 秒，请耐心等待，勿重复上传</div>
           </div>
 

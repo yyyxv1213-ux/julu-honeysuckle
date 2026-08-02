@@ -87,9 +87,9 @@ async function askWeatherAdvice() {
         timeout: 60000
       }
     )
-    weatherAdvice.value = resp.data?.choices?.[0]?.message?.content || '（AI 未返回内容）'
+    weatherAdvice.value = resp.data?.choices?.[0]?.message?.content || '（暂无解读内容）'
   } catch (e) {
-    weatherAdvice.value = '（AI 解读失败，可稍后重试）'
+    weatherAdvice.value = '（解读失败，可稍后重试）'
   }
   adviceLoading.value = false
 }
@@ -215,7 +215,7 @@ watch(range, (val) => {
       <el-col :xs="24" :md="8">
         <div class="stat-card predict-card">
           <div class="chart-title">未来三月价格预测</div>
-          <div class="predict-badge">AI 线性回归模型</div>
+          <div class="predict-badge">趋势预测</div>
           <div class="predict-item" v-for="p in prediction" :key="p.month">
             <span class="predict-month">{{ p.month }}</span>
             <span class="predict-price">{{ p.price }} 元/公斤</span>
@@ -252,11 +252,11 @@ watch(range, (val) => {
               @click="askWeatherAdvice"
               class="weather-advice-btn"
             >
-              Agnes AI 解读天气与农事建议
+              天气与农事解读
             </el-button>
-            <div v-if="adviceLoading" class="weather-advice loading">Agnes 正在分析…</div>
+            <div v-if="adviceLoading" class="weather-advice loading">正在分析…</div>
             <div v-else-if="weatherAdvice" class="weather-advice">{{ weatherAdvice }}</div>
-            <div v-if="!AGNES_KEY" class="weather-note">配置 VITE_AGNES_API_KEY 后可启用 AI 农事解读</div>
+            <div v-if="!AGNES_KEY" class="weather-note">配置 VITE_AGNES_API_KEY 后可启用农事解读</div>
           </div>
           <div v-else class="weather-loading">天气数据加载失败（open-meteo 服务不可用）</div>
         </div>
