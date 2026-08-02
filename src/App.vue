@@ -1,23 +1,48 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { computed } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 
 const route = useRoute()
 const activeMenu = computed(() => route.path)
+
+const isCollapse = ref(false)
+let isMobile = false
+
+function onResize() {
+  const shouldCollapse = window.innerWidth < 768
+  if (shouldCollapse !== isMobile) {
+    isMobile = shouldCollapse
+    isCollapse.value = shouldCollapse
+  }
+}
+
+onMounted(() => {
+  onResize()
+  window.addEventListener('resize', onResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', onResize)
+})
 </script>
 
 <template>
   <el-container class="app-layout">
-    <el-aside width="220px" class="app-aside">
+    <el-aside :width="isCollapse ? '64px' : '220px'" class="app-aside" :class="{ 'is-collapsed': isCollapse }">
       <div class="brand">
         <span class="brand-icon">🌿</span>
         <div class="brand-text">
-          <div class="brand-name">太行薪火 金银花开</div>
+          <div class="brand-name" v-show="!isCollapse">太行薪火 金银花开</div>
         </div>
+        <el-button class="collapse-btn" text circle size="small" @click="isCollapse = !isCollapse">
+          <el-icon v-if="isCollapse"><Expand /></el-icon>
+          <el-icon v-else><Fold /></el-icon>
+        </el-button>
       </div>
       <el-menu
         :default-active="activeMenu"
         router
+        :collapse="isCollapse"
         class="app-menu"
       >
         <el-menu-item index="/">
@@ -68,8 +93,12 @@ const activeMenu = computed(() => route.path)
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: auto;
+  width: var(--el-aside-width, 220px);
   min-width: 170px;
+  transition: width 0.25s ease, min-width 0.25s ease;
+}
+.app-aside.is-collapsed {
+  min-width: 64px;
 }
 .brand {
   display: flex;
@@ -78,6 +107,22 @@ const activeMenu = computed(() => route.path)
   padding: 18px 18px 12px;
   color: #fff;
   flex-shrink: 0;
+}
+.app-aside.is-collapsed .brand {
+  padding: 18px 8px 12px;
+  justify-content: center;
+}
+.collapse-btn {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+}
+.collapse-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+.app-aside.is-collapsed .collapse-btn {
+  margin-left: 0;
 }
 .brand-text { display: flex; align-items: center; }
 .brand-icon { font-size: 26px; flex-shrink: 0; }

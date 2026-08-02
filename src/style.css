@@ -91,16 +91,8 @@ body {
 }
 .md-body strong { color: #1f4d35; }
 
-/* ===== 响应式：小屏侧边栏 ===== */
+/* ===== 响应式：移动端适配 ===== */
 @media (max-width: 768px) {
-  .el-aside.app-aside {
-    width: 52px !important;
-    flex-shrink: 0;
-  }
-  .brand-text,
-  .app-menu .el-menu-item span {
-    display: none;
-  }
   .header-extra {
     display: none;
   }
