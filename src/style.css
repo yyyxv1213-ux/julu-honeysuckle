@@ -97,10 +97,14 @@ body {
     display: none;
   }
   .app-main {
-    padding: 12px !important;
+    padding: 8px !important;
   }
   .page-wrap {
-    padding: 0 8px;
+    padding: 0 4px;
+  }
+  /* 压缩卡片内边距，为图表/内容腾出宽度 */
+  .stat-card {
+    padding: 12px 14px !important;
   }
 }
 

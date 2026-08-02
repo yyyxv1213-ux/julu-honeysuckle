@@ -34,10 +34,6 @@ onUnmounted(() => {
         <div class="brand-text">
           <div class="brand-name" v-show="!isCollapse">太行薪火 金银花开</div>
         </div>
-        <el-button class="collapse-btn" text circle size="small" @click="isCollapse = !isCollapse">
-          <el-icon v-if="isCollapse"><Expand /></el-icon>
-          <el-icon v-else><Fold /></el-icon>
-        </el-button>
       </div>
       <el-menu
         :default-active="activeMenu"
@@ -68,7 +64,13 @@ onUnmounted(() => {
 
     <el-container class="app-body">
       <el-header class="app-header">
-        <div class="header-title">{{ route.meta.title || '太行薪火 金银花开 产业指挥服务平台' }}</div>
+        <div class="header-left">
+          <el-button class="collapse-btn" text circle size="small" @click="isCollapse = !isCollapse">
+            <el-icon v-if="isCollapse"><Expand /></el-icon>
+            <el-icon v-else><Fold /></el-icon>
+          </el-button>
+          <div class="header-title">{{ route.meta.title || '太行薪火 金银花开 产业指挥服务平台' }}</div>
+        </div>
         <div class="header-extra">数据整理于公开资料 · AI 功能由 Agnes 提供</div>
       </el-header>
       <el-main class="app-main">
@@ -112,21 +114,9 @@ onUnmounted(() => {
   padding: 18px 8px 12px;
   justify-content: center;
 }
-.collapse-btn {
-  margin-left: auto;
-  color: rgba(255, 255, 255, 0.75);
-  flex-shrink: 0;
-}
-.collapse-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.12) !important;
-}
-.app-aside.is-collapsed .collapse-btn {
-  margin-left: 0;
-}
 .brand-text { display: flex; align-items: center; }
 .brand-icon { font-size: 26px; flex-shrink: 0; }
-.brand-name { font-size: 19px; font-weight: 700; letter-spacing: 0.08em; white-space: nowrap; }
+.brand-name { font-size: 16px; font-weight: 700; letter-spacing: 0.08em; white-space: nowrap; }
 .app-menu {
   border-right: none;
   background: transparent;
@@ -157,7 +147,21 @@ onUnmounted(() => {
   flex-shrink: 0;
   padding: 0 20px;
 }
-.header-title { font-size: 20px; font-weight: 600; color: #1f4d35; }
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.collapse-btn {
+  color: #1f4d35;
+  flex-shrink: 0;
+}
+.collapse-btn:hover {
+  color: #2c6b48;
+  background: rgba(31, 77, 53, 0.08) !important;
+}
+.header-title { font-size: 20px; font-weight: 600; color: #1f4d35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .header-extra { font-size: 13px; color: #999; }
 .app-main {
   background: #f5f7f5;
